@@ -46,11 +46,11 @@ O sistema disponibiliza as seguintes operações sobre a entidade `Corrida`:
 
 ### Backend
 - **Node.js** — Ambiente de execução JavaScript no servidor
-- **Express.js** — Framework para criação de rotas e gerenciamento de requisições HTTP
+
 
 ### Banco de Dados
 - **SQL** — Linguagem de consulta estruturada para manipulação dos dados
-- **MySQL** ou **PostgreSQL** — Sistema gerenciador de banco de dados relacional
+- **MySQL**  — Sistema gerenciador de banco de dados relacional
 
 ### Testes
 - **Insomnia** — Cliente HTTP para testar e documentar os endpoints da API
@@ -82,8 +82,8 @@ npm start
 
 ```json
 {
-  "destino_inicial": "Av. Paulista, 1000 - São Paulo",
-  "destino_final": "Aeroporto de Guarulhos - SP",
+  "destinoInicial": "Av. Paulista, 1000 - São Paulo",
+  "destinoFinal": "Aeroporto de Guarulhos - SP",
   "passageira": "Ana Silva",
   "motorista": "Carla Souza",
   "carro": "Toyota Corolla - ABC-1234",
