@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './corrida/app.controller';
-import { AppService } from './corrida.service';
+import { CorridaController } from './corrida.controller';
+import { CorridaService } from './corrida.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [CorridaController],
+  providers: [CorridaService],
 })
-export class AppModule {}
+export class CorridaModule {}

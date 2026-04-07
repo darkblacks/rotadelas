@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './corrida.service';
+import { CorridaService } from './corrida.service';
 
-@Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+@Controller('corrida')
+export class CorridaController {
+  constructor(private readonly corridaService: CorridaService) {}
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return this.corridaService.getHello();
   }
 }
