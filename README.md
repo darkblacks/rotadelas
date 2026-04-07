@@ -1,98 +1,100 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚗 Rota Delas
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+> **Modelo de Negócio:** Aplicativo de transporte por aplicativo **exclusivo para mulheres** — tanto motoristas quanto passageiras são mulheres, oferecendo um ambiente seguro e de confiança para o deslocamento urbano.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📋 Descrição Geral
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+O **Rota Delas** é uma plataforma backend de gerenciamento de corridas desenvolvida com Node.js e SQL. O sistema permite o cadastro, consulta, atualização e exclusão de corridas realizadas dentro do aplicativo, conectando passageiras a motoristas em um ambiente 100% feminino.
 
-## Project setup
+A API foi construída seguindo os princípios REST, com endpoints testados via **Insomnia**, garantindo praticidade e organização durante o desenvolvimento.
 
-```bash
-$ npm install
-```
+---
 
-## Compile and run the project
+## 🗂️ Entidade e Atributos
 
-```bash
-# development
-$ npm run start
+### Entidade: `Corrida`
 
-# watch mode
-$ npm run start:dev
+| Atributo           | Tipo     | Descrição                                      |
+|--------------------|----------|------------------------------------------------|
+| `id`               | INTEGER  | Identificador único da corrida (auto-increment)|
+| `destino_inicial`  | VARCHAR  | Ponto de partida da corrida                    |
+| `destino_final`    | VARCHAR  | Ponto de chegada da corrida                    |
+| `passageira`       | VARCHAR  | Nome da passageira                             |
+| `motorista`        | VARCHAR  | Nome da motorista                              |
+| `carro`            | VARCHAR  | Modelo/placa do veículo utilizado              |
+| `preco`            | DECIMAL  | Valor cobrado pela corrida (em R$)             |
 
-# production mode
-$ npm run start:prod
-```
+---
 
-## Run tests
+## ⚙️ Funcionalidades Principais (CRUD)
 
-```bash
-# unit tests
-$ npm run test
+O sistema disponibiliza as seguintes operações sobre a entidade `Corrida`:
 
-# e2e tests
-$ npm run test:e2e
+| Método HTTP | Endpoint          | Função              | Descrição                                    |
+|-------------|-------------------|---------------------|----------------------------------------------|
+| `GET`       | `/corridas`        | `findAll()`         | Retorna todas as corridas cadastradas        |
+| `GET`       | `/corridas/:id`    | `findById()`        | Retorna uma corrida específica pelo ID       |
+| `POST`      | `/corridas`        | `post()`            | Cadastra uma nova corrida                    |
+| `PUT`       | `/corridas/:id`    | `put()`             | Atualiza os dados de uma corrida existente   |
+| `DELETE`    | `/corridas/:id`    | `delete()`          | Remove uma corrida pelo ID                   |
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Deployment
+## 🛠️ Tecnologias Utilizadas
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Backend
+- **Node.js** — Ambiente de execução JavaScript no servidor
+- **Express.js** — Framework para criação de rotas e gerenciamento de requisições HTTP
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Banco de Dados
+- **SQL** — Linguagem de consulta estruturada para manipulação dos dados
+- **MySQL** ou **PostgreSQL** — Sistema gerenciador de banco de dados relacional
+
+### Testes
+- **Insomnia** — Cliente HTTP para testar e documentar os endpoints da API
+
+---
+
+## 🚀 Como Executar o Projeto
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Clone o repositório
+git clone https://github.com/seu-usuario/rota-delas.git
+
+# Acesse a pasta do projeto
+cd rota-delas
+
+# Instale as dependências
+npm install
+
+
+# Execute o servidor
+npm start
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## 🔗 Exemplo de Requisição
 
-Check out a few resources that may come in handy when working with NestJS:
+**POST /corridas** — Criar uma nova corrida:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```json
+{
+  "destino_inicial": "Av. Paulista, 1000 - São Paulo",
+  "destino_final": "Aeroporto de Guarulhos - SP",
+  "passageira": "Ana Silva",
+  "motorista": "Carla Souza",
+  "carro": "Toyota Corolla - ABC-1234",
+  "preco": 85.50
+}
+```
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+Projeto desenvolvido com 💜 para tornar o transporte mais seguro para todas as mulheres.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
