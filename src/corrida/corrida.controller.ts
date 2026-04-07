@@ -31,11 +31,10 @@ export class CorridaController {
         return this.corridaService.create(corrida);
     }
 
-    @Put()
-    @HttpCode(HttpStatus.OK)
-    update(@Body() corrida: Corrida): Promise<Corrida> {
-        return this.corridaService.update(corrida);
-    }
+    @Put(":id")
+update(@Param("id") id: string, @Body() corrida: Corrida): Promise<Corrida> {
+    return this.corridaService.update(Number(id), corrida);
+}
 
     @Delete('/:id')
     @HttpCode(HttpStatus.NO_CONTENT)
