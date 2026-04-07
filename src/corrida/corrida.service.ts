@@ -45,6 +45,16 @@ export class CorridaService {
         return await this.corridaRepository.save(corrida);
     }
 
+
+    async findAllByDestino(destino: string): Promise<Corrida[]> {
+    return await this.corridaRepository.find({
+        where: [
+            { destinoInicial: destino },
+            { destinoFinal: destino }
+        ]
+    });
+}
+
     async update(corrida: Corrida): Promise<Corrida> {
 
         await this.findById(corrida.id);
